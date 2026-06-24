@@ -63,6 +63,16 @@ class PersistentCore:
 
         scored_memories.sort(key=lambda x: x[0], reverse=True)
         return [mem[1] for mem in scored_memories[:top_k]]
+                # Call the new tone mapper
+        current_tone = self.get_personality_tone()
+        
+        response = (
+            f"[Identity: {self.state.get('agent_name', 'Kortana')} | Tone: {current_tone}]\n"
+            f"Interactions: {self.state['interaction_count']} | Curiosity: {self.state['curiosity_index']:.4f}\n"
+            f"Linked Historical Memory: [{context_summary}]\n"
+            f"Execution Path: Processing payload under baseline: {self.state.get('system_role')}."
+        )
+
         response = (
             f"[Identity: {self.state.get('agent_name', 'Core')} | Interactions: {self.state['interaction_count']} | Curiosity: {self.state['curiosity_index']:.4f}]\n"
             f"Linked Historical Memory: Context found -> [{context_summary}]\n"
