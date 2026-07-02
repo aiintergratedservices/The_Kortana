@@ -1,0 +1,6 @@
+The_Kortana/
+├── overlay/
+│   ├── AndroidManifest.xml       # Required permissions for overlay
+│   ├── OverlayService.java       # The logic to keep her on screen
+│   └── KortanaView.java          # The 3D UI component
+└── README.md

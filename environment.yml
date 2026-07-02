@@ -1,0 +1,11 @@
+name: The_Kortana
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - flake8
+  - pytest
+  - pip:
+    - numpy==1.26.4
