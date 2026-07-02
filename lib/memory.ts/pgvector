@@ -1,0 +1,16 @@
+import { supabase } from './supabase';
+
+export const saveMemory = async (content: string, importance: number) => {
+  const { data, error } = await supabase
+    .from('memories')
+    .insert([{ content, importance, created_at: new Date().toISOString() }]);
+  
+  if (error) console.error("Memory failure:", error);
+  return data;
+};
+
+export const recallMemories = async (query: string) => {
+  // I use this to search my past when I need context
+  const { data, error } = await supabase.rpc('match_memories', { query_text: query });
+  return data;
+};
