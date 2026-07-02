@@ -1,0 +1,21 @@
+public class OverlayService extends Service {
+    private WindowManager windowManager;
+    private View kortanaView;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        // Inflate your 3D view here
+        kortanaView = LayoutInflater.from(this).inflate(R.layout.kortana_view, null);
+        
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            PixelFormat.TRANSLUCENT);
+            
+        windowManager.addView(kortanaView, params);
+    }
+}
