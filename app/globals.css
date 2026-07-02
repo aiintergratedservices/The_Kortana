@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: radial-gradient(circle at top, #1d2148 0%, #06070f 60%, #000 100%);
+  color: #f5f7ff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main.shell {
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-card {
+  width: min(100%, 860px);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(8, 10, 24, 0.88);
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+  padding: 1.25rem;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+}
+
+.status-row,
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.74rem;
+  color: #8ea4ff;
+  margin-bottom: 0.2rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #8fb8ff 0%, #c1afff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.presence-pill {
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+}
+
+.presence-pill.listening {
+  background: rgba(83, 140, 255, 0.22);
+}
+
+.presence-pill.speaking {
+  background: rgba(214, 85, 255, 0.24);
+}
+
+.avatar-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
+  margin: 1rem 0;
+}
+
+.avatar-core {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #d5f0ff 0%, #7d87ff 35%, #1d1c3f 100%);
+  box-shadow: inset 0 0 50px rgba(255,255,255,0.2), 0 0 60px rgba(111, 130, 255, 0.45);
+  animation: drift 5s ease-in-out infinite;
+}
+
+.avatar-core.speaking {
+  animation: pulse 0.8s ease-in-out infinite;
+}
+
+.avatar-face {
+  position: absolute;
+  inset: 38px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(187,200,255,0.8));
+  border: 3px solid rgba(255,255,255,0.34);
+}
+
+.avatar-face::before,
+.avatar-face::after {
+  content: '';
+  position: absolute;
+  top: 72px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0f1636;
+}
+
+.avatar-face::before { left: 56px; }
+.avatar-face::after { right: 56px; }
+
+.avatar-ring {
+  position: absolute;
+  inset: -12px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  animation: spin 6s linear infinite;
+}
+
+.controls-row button,
+.composer button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #7f8dfd, #9d69ff);
+}
+
+.chat-window {
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.6rem;
+  max-height: 320px;
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.bubble {
+  padding: 0.8rem 0.95rem;
+  border-radius: 16px;
+  line-height: 1.45;
+  max-width: 82%;
+  color: #f9faff;
+}
+
+.bubble.kortana {
+  background: rgba(130, 140, 255, 0.25);
+  margin-right: auto;
+}
+
+.bubble.user {
+  background: rgba(255,255,255,0.12);
+  margin-left: auto;
+}
+
+.composer {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.composer input {
+  flex: 1;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.composer input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-6px) scale(1.02); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(111, 130, 255, 0.45); }
+  50% { transform: scale(1.05); box-shadow: 0 0 90px rgba(188, 109, 255, 0.62); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .hero-card { padding: 1rem; }
+  .controls-row { flex-direction: column; align-items: stretch; }
+  .composer { flex-direction: column; }
+  .bubble { max-width: 100%; }
+}
