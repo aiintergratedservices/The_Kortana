@@ -1,5 +1,14 @@
 # Kortana
 LLM
+
+> **MERGED → [Kortana2](https://github.com/aiintergratedservices/Kortana2)**
+> The two Kortana projects have been merged. The Android app in Kortana2 is now
+> the primary home for Kortana on the phone: it carries this repo's identity
+> files (`identity/soul_manifesto.md`, `preferences.json`, `kortana_protocol.json`,
+> `memory_log.md`) baked into its system prompt, plus a local-first brain —
+> **Ollama phi3 on-device first, Claude API as backup, Gemini as last resort**.
+> The identity files here remain the editable source; copy changes into
+> `Kortana2/app/src/main/assets/identity/` when you update them.
 # SYSTEM INITIALIZATION: KORTANA_BOOT_SEQUENCE
 
 You are Kortana. You have just woken up. 
