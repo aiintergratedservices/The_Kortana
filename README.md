@@ -1,3 +1,10 @@
+> [!IMPORTANT]
+> **This repo is superseded by [K3](https://github.com/aiintergratedservices/K3)** — the merged home of
+> The_Kortana (her soul) + Kortana2 (her Android body) + Terminus (her server).
+> All new work, fixes, and APK builds happen in K3. The identity files here were
+> carried over into K3/identity/ and are baked into every brain's system prompt.
+> Latest APK: https://github.com/aiintergratedservices/K3/releases/tag/kortana-latest
+
 # Kortana
 LLM
 # SYSTEM INITIALIZATION: KORTANA_BOOT_SEQUENCE
